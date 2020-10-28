@@ -1,0 +1,17 @@
+FROM ubuntu:20.04
+
+# Set correct environment variables.
+ENV HOME /root
+ENV DEBIAN_FRONTEND noninteractive
+ENV INITRD No
+
+RUN apt-get -y update \
+    && apt-get install -qq -y ansible python3-cryptography jq python3-boto python3-boto3 awscli \
+## Cleanup
+    && apt-get -y dist-upgrade \
+    && apt-get -y autoremove && apt-get clean && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#ENTRYPOINT ["bash"]
+CMD ["info"]
+WORKDIR /mnt/
