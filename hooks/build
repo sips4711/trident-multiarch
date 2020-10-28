@@ -11,13 +11,27 @@ for arch in ${verified_build_architectures[@]}; do
   echo "✅ building $arch"
   echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 
-  BASE_IMAGE_PREFIX="${base_image_prefix_map[${arch}]}"
-  docker build \
-    --build-arg BASE_IMAGE_PREFIX=${BASE_IMAGE_PREFIX} \
-    --build-arg ARCH=${arch} \
-    --file $DOCKERFILE_PATH \
-    --tag "${IMAGE_NAME}-${arch}"  \
-    .
+  docker buildx build --help
+  ls -lah 
+
+  # docker buildx build \
+  # --platform linux/ppc64le \
+  # --build-arg BASE_IMAGE_PREFIX=${BASE_IMAGE_PREFIX} \
+  # --build-arg ARCH=${arch} \
+  # --file $DOCKERFILE_PATH \
+  # --tag "${IMAGE_NAME}-${arch}" \
+  # .
+  # docker buildx build \
+  #   --platform linux/$arch \
+  #   --build-arg PORT=${PORT} \
+  #   --build-arg BIN=${BIN} \
+  #   --build-arg CLI_BIN=${CLI_BIN} \
+  #   --build-arg K8S=${K8S} \
+  #   -t ${TRIDENT_TAG} \
+  #   --rm \
+  #   --load \
+  #   .
+
 done
 
 echo "✅ images built:"
