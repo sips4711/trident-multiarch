@@ -13,4 +13,4 @@ chmod 777 start.sh
 docker run -it --rm -v "$(pwd)/":/data/ jdrouet/docker-with-buildx:stable /data/start.sh
 
 
-docker images
+#docker images
