@@ -22,7 +22,6 @@ mkdir -p ~/.docker/cli-plugins
 curl -L  https://github.com/docker/buildx/releases/download/v0.4.2/buildx-v0.4.2.linux-amd64 --output ~/.docker/cli-plugins/docker-buildx
 chmod +x ~/.docker/cli-plugins/docker-buildx
 
-
 echo "✅ Build a usable config.json file"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 # Manifests are still experimental and enabled by a config file flag.
