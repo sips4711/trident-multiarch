@@ -16,5 +16,9 @@ docker buildx inspect --bootstrap
 git clone https://github.com/NetApp/trident
 export GOARCH=ppc64le
 export GOOS=linux
+cd trident
+sed -i 's/^GO_LINUX = ${DR_LINUX} ${GO_CMD}/GO_LINUX = \$\{GO_CMD\}/' Makefile
+sed -i 's/^TRIDENT_VOLUME_PATH = \/go\/src\/github.com\/netapp\/trident/TRIDENT_VOLUME_PATH = ${ROOT}/' Makefile
+sed -i 's/docker build/docker buildx build --platform linux\/ppc64le/' Makefile
 # makefiles modification....
-#make trident_build operator_build
+make trident_build operator_build
